@@ -1,0 +1,16 @@
+{
+  "name": "ai-app-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered app builder",
+  "scripts": {
+    "build": "node -e \"const fs=require('fs');fs.mkdirSync('www',{recursive:true});fs.copyFileSync('index.html','www/index.html');if(fs.existsSync('manifest.webmanifest'))fs.copyFileSync('manifest.webmanifest','www/manifest.webmanifest');if(fs.existsSync('sw.js'))fs.copyFileSync('sw.js','www/sw.js');\""
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3"
+  }
+}
