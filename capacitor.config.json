@@ -1,0 +1,8 @@
+{
+  "appId": "com.ask9724.aiappbuilder",
+  "appName": "AI App Builder",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
