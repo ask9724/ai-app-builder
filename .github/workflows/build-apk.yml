@@ -33,10 +33,11 @@ jobs:
           const html = fs.readFileSync('www/index.html', 'utf8');
           if (!html.includes('api.openai.com/v1/chat/completions')) throw new Error('OpenAI provider missing');
           if (!html.includes('generativelanguage.googleapis.com')) throw new Error('Gemini provider missing');
-          const scripts = [...html.matchAll(/<script>([\\s\\S]*?)<\\/script>/gi)];
-          if (!scripts.length) throw new Error('No app script found');
-          scripts.forEach((m, i) => new Function(m[1]));
-          console.log('Validated', scripts.length, 'inline script(s)');
+          const start = html.indexOf('<script>');
+          const end = html.lastIndexOf('</script>');
+          if (start < 0 || end <= start) throw new Error('No app script found');
+          new Function(html.slice(start + 8, end));
+          console.log('Validated app inline JavaScript');
           NODE
           npm init -y
           npm install @capacitor/core@7 @capacitor/android@7
